@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vuejs 2 testing </title>
+</head>
+
+<body>
+    <div id="component">
+        <h1>Welcome to VueJs 2</h1>
+        <!-- computed properties is good for performance more than methods  -->
+        <!-- second thing when i use computed and edit the any properties they just one render in the page not else  -->
+        <label>Search for Programming Languages : </label>
+        <input type="text" v-model="findLanguage" />
+        <li v-for="lang in filterLanguages">
+            {{lang}}
+
+        </li>
+    </div>
+    <script src="./js/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#component",
+            data: {
+                age: 22,
+                firstName: "mohammed",
+                lastName: "dabour",
+                findLanguage: '',
+                languages: ['Java ', 'Query', 'Nodejs', 'Javascript', 'PHP', 'Laravel', 'HTML', 'ExpressJs'],
+                message: "welcome to the website",
+            },
+            methods: {
+                fullName: function () {
+                    console.log('Running ...');
+                    return this.firstName + ' ' + this.lastName;
+                }
+            },
+
+            // computed vs methods d
+            //calcAge vs calcAge()
+            computed: {
+                // calcAge: function () {
+                // console.log('run ....');
+                // return this.age * 2;}
+                filterLanguages: function () {
+                    var filtering = new RegExp(this.findLanguage, 'i');
+                    return this.languages.filter(function (el) {
+                        return el.match(filtering);
+                    })
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

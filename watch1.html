@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vuejs 2 testing </title>
+</head>
+
+<body>
+    <div id="component">
+        <h1>Welcome to VueJs 2</h1>
+        <label>Egyption Pound</label>
+        <input type="text" v-model="eg">
+        <label>Saudi Riyal</label>
+        <input type="text" v-model="sar">
+    </div>
+    <script src="./js/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#component",
+            data: {
+                eg: 0,
+                sar: 0,
+
+            },
+            methods: {
+
+            },
+
+            computed: {
+
+            },
+            watch: {
+                eg: function (v) {
+                    this.sar = v / 5;
+                    console.log("EG running ...");
+                },
+                sar: function (v) {
+                    this.eg = v * 5;
+                    console.log("SAR running ...");
+                },
+            
+            },
+        });
+    </script>
+</body>
+
+</html>
